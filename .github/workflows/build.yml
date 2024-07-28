@@ -28,7 +28,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m pytest ./tests -v --disable-warnings --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+          python -m pytest ./tests -v --disable-warnings --doctest-modules --junitxml=junit/test-results.xml
 
   build-docker-image:
     runs-on: ubuntu-latest
