@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data:Z
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  bot:
+    image: ghcr.io/wladbelsky/bet-maker/bet-maker:main
+    environment:
+      WEB_SERVER_HOST: ${WEB_SERVER_HOST}
+      WEB_SERVER_PORT: ${WEB_SERVER_PORT}
+      DB_ENGINE: postgresql+asyncpg
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: postgres
+    depends_on:
+        - db
