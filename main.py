@@ -18,4 +18,4 @@ app.include_router(events_router)
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, host=WEB_SERVER_HOST, port=WEB_SERVER_PORT)
+    uvicorn.run(app, host=WEB_SERVER_HOST, port=int(WEB_SERVER_PORT))

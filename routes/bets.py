@@ -44,12 +44,7 @@ async def get_bets(db: Database = Depends(Database.get_instance)):
     return resp
 
 
-@router.post('/', response_model=BetResponse, responses={
-    400: {'description': 'Event not found',
-          'content': {
-              "detail": "Event not found"
-          }}}
-             )
+@router.post('/', response_model=BetResponse)
 async def create_bet(bet: BetRequest, db: Database = Depends(Database.get_instance)):
     async with db.get_session() as session:
         new_bet = Bet(amount=bet.amount, event_id=bet.event_id)
